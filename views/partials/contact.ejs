@@ -1,12 +1,44 @@
 <div class="row">
+  <div class="container d-flex justify-content-center">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        Email: 
+        <a href="mailto:choang11@my.centennialcollege.ca">
+          <i class="fas fa-envelope"></i>choang11@my.centennialcollege.ca
+        </a>
+      </li>
+      <li class="list-group-item">
+        LinkedIn: 
+        <a href="https://www.linkedin.com/in/lanh/">
+          <i class="fa-brands fa-linkedin"></i>lanh
+        </a>
+      </li>
+      <li class="list-group-item">
+        GitHub: 
+        <a href="https://github.com/lanhhoang">
+          <i class="fa-brands fa-github"></i>lanhhoang
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
   <p class="text-center fs-5 fw-semibold">
     Do you have a question, or are you interested in collaborating?
   </p>
   <div class="container d-flex justify-content-center">
     <form class="w-50">
       <div class="mb-3">
-        <label for="contactName" class="form-label">Name</label>
-        <input type="text" class="form-control" id="contactName">
+        <label for="contactFirstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="contactFirstName">
+      </div>
+      <div class="mb-3">
+        <label for="contactLastName" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="contactLastName">
+      </div>
+      <div class="mb-3">
+        <label for="contactPhoneNumber" class="form-label">Phone Number</label>
+        <input type="tel" class="form-control" id="contactPhoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
       </div>
       <div class="mb-3">
         <label for="contactEmail" class="form-label">Email address</label>
