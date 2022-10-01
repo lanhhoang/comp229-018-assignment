@@ -1,7 +1,9 @@
 <% include partials/header.ejs %>
   <div class="container">
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1 class="text-center"><%= title %></h1>
+    <div class="d-flex justify-content-center">
+      <hr class="border border-dark border-2 opacity-50 w-25">
+    </div>
 
     <% if (title == "Home") { %>
       <% include partials/home.ejs %>
