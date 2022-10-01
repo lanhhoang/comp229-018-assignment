@@ -1,3 +1,10 @@
+/*
+File name: app.js
+Student name: Cong Lanh Hoang
+Student ID: 301210743
+Date: September 30, 2022
+*/
+
 // import 3rd party modules
 var createError = require("http-errors"); // error handler
 var express = require("express"); // Express
