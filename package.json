@@ -1,9 +1,9 @@
 {
-  "name": "comp229-018-assignment-1",
+  "name": "comp229-018-assignment",
   "version": "1.0.0",
   "description": "Express Portfolio Site",
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node ./server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -12,10 +12,11 @@
   },
   "keywords": [
     "COMP-229",
-    "Portfolio",
+    "Assignment",
     "NodeJS",
     "ExpressJS",
-    "EJS"
+    "EJS",
+    "MongoDB"
   ],
   "author": "Lanh Hoang",
   "license": "MIT",

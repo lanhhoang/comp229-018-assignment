@@ -1,16 +1,15 @@
 /*
-File name: routes/users.js
+File name: routes/user.router.js
 Student name: Cong Lanh Hoang
 Student ID: 301210743
-Date: Oct 5, 2022
+Date: October 14, 2022
 */
 
 var express = require("express");
 var router = express.Router();
+let userController = require('../controllers/user.controller');
 
 /* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
-});
+router.get("/", userController.userList);
 
 module.exports = router;
