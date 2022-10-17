@@ -12,4 +12,7 @@ let contactsController = require("../controllers/contacts.controller");
 /* GET contacts listing. */
 router.get("/", contactsController.contactIndex);
 
+/* DELETE contact. */
+router.get("/delete/:id", contactsController.delete);
+
 module.exports = router

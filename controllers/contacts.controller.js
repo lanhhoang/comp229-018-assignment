@@ -20,3 +20,17 @@ module.exports.contactIndex = function (req, res, next) {
     }
   }).sort({ firstName: 1 });
 };
+
+module.exports.delete = (req, res, next) => {
+  const id = req.params.id;
+
+  Contact.remove({ _id: id }, (err) => {
+    if (err) {
+      console.error(err);
+      res.end(err);
+    } else {
+      // refresh the contact list
+      res.redirect("/contacts");
+    }
+  });
+};
