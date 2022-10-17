@@ -15,6 +15,7 @@ var logger = require("morgan"); // HTTP logger
 // import routers
 var indexRouter = require("../routes/index.router");
 var usersRouter = require("../routes/user.router");
+var contactsRouter = require("../routes/contacts.router");
 
 // instantiate new express object
 var app = express();
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, "../node_modules"))); // second stat
 
 app.use("/", indexRouter); // defined paths after root path
 app.use("/users", usersRouter); // defined paths after users root path
+app.use("/contacts", contactsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
