@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 
+var configDB = require("./config/db"); // Import DB config
 var app = require("./config/app");
 var debug = require("debug")("comp229.018.assignment1:server");
 var http = require("http");
@@ -12,6 +13,7 @@ var http = require("http");
  * Get port from environment and store in Express.
  */
 
+var db = configDB(); // Start DB connection
 var port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
 
@@ -83,4 +85,5 @@ function onListening() {
   var addr = server.address();
   var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
   debug("Listening on " + bind);
+  console.log(`Express app listening on port http://localhost:${port}`);
 }
