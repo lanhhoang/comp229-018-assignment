@@ -12,4 +12,19 @@ let contactsController = require("../controllers/contacts.controller");
 /* GET contacts listing. */
 router.get("/", contactsController.contactIndex);
 
-module.exports = router
+/* GET route for displaying the Add page - CREATE operation */
+router.get("/add", contactsController.displayAddPage);
+
+/* POST route for processing the Add page - CREATE operation */
+router.post("/add", contactsController.processAddPage);
+
+/* GET route for displaying the Edit page - UPDATE operation */
+router.get("/edit/:id", contactsController.displayEditPage);
+
+/* POST route for processing the Edit page - UPDATE operation */
+router.post("/edit/:id", contactsController.processEditPage);
+
+/* DELETE contact. */
+router.get("/delete/:id", contactsController.delete);
+
+module.exports = router;
