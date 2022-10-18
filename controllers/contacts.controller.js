@@ -51,6 +51,44 @@ module.exports.processAddPage = (req, res, next) => {
   });
 };
 
+module.exports.displayEditPage = (req, res, next) => {
+  const id = req.params.id;
+
+  Contact.findById(id, (err, contact) => {
+    if (err) {
+      console.error(err);
+      res.end(err);
+    } else {
+      // show the edit view
+      res.render("contacts/add_edit", {
+        title: "Edit Contact",
+        contact: contact,
+      });
+    }
+  });
+};
+
+module.exports.processEditPage = (req, res, next) => {
+  const id = req.params.id;
+  const updatedContact = Contact({
+    _id: req.body.id,
+    firstName: req.body.first_name,
+    lastName: req.body.last_name,
+    phoneNumber: req.body.phone_number,
+    email: req.body.email,
+  });
+
+  Contact.updateOne({ _id: id }, updatedContact, (err) => {
+    if (err) {
+      console.error(err);
+      res.end(err);
+    } else {
+      // refresh the contact list
+      res.redirect("/contacts");
+    }
+  });
+};
+
 module.exports.delete = (req, res, next) => {
   const id = req.params.id;
 
