@@ -72,6 +72,12 @@
             <i class="fa-solid fa-rotate-left"></i>
             Cancel
           </a>
+          <% if (title == "Edit Contact") { %>
+            <a href="/contacts/delete/<%= contact._id %>" class="btn btn-danger">
+              <i class="fa-solid fa-trash"></i>
+              Delete
+            </a>
+          <% } %>
         </form>
       </div>
     </div>
