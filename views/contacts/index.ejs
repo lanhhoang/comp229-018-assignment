@@ -4,11 +4,15 @@
     <div class="row">
       <h1 class="text-center"><%= title %></h1>
       <div class="d-flex justify-content-center">
-        <hr class="border border-dark border-2 opacity-50 w-25">
+        <hr class="border border-dark border-2 opacity-50 w-25" />
       </div>
-      <br>
+      <br />
       <div>
-        <a href="/contacts/add" class="btn btn-primary align-self-end" role="button">
+        <a
+          href="/contacts/add"
+          class="btn btn-primary align-self-end"
+          role="button"
+        >
           <i class="fas fa-plus-circle"></i>
           Add New Contact
         </a>
@@ -24,21 +28,27 @@
           </tr>
 
           <% for (let idx = 0; idx < contacts.length; idx++) { %>
-            <tr>
-              <td class="text-center"><%= contacts[idx].fullName %></td>
-              <td class="text-center"><%= contacts[idx].phoneNumber %></td>
-              <td class="text-center"><%= contacts[idx].email %></td>
-              <td class="text-center">
-                <a href="/contacts/edit/<%= contacts[idx]._id %>" class="btn btn-primary btn-sm">
-                  <i class="fa-solid fa-pen-to-square"></i>
-                </a>
-              </td>
-              <td class="text-center">
-                <a href="/contacts/delete/<%= contacts[idx]._id %>" class="btn btn-danger btn-sm">
-                  <i class="fa-solid fa-trash"></i>
-                </a>
-              </td>
-            </tr>
+          <tr>
+            <td class="text-center"><%= contacts[idx].fullName %></td>
+            <td class="text-center"><%= contacts[idx].phoneNumber %></td>
+            <td class="text-center"><%= contacts[idx].email %></td>
+            <td class="text-center">
+              <a
+                href="/contacts/edit/<%= contacts[idx]._id %>"
+                class="btn btn-primary btn-sm"
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </a>
+            </td>
+            <td class="text-center">
+              <a
+                href="/contacts/delete/<%= contacts[idx]._id %>"
+                class="btn btn-danger btn-sm"
+              >
+                <i class="fa-solid fa-trash"></i>
+              </a>
+            </td>
+          </tr>
           <% } %>
         </table>
       </div>
