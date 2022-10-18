@@ -1,11 +1,19 @@
 #!/usr/bin/env node
 
+/*
+File name: server.js
+Student name: Cong Lanh Hoang
+Student ID: 301210743
+Date: October 18, 2022
+*/
+
 /**
  * Module dependencies.
  */
 
 var configDB = require("./config/db"); // Import DB config
 var app = require("./config/app");
+var passportConfig = require("./config/passport"); // Import Passport config
 var debug = require("debug")("comp229.018.assignment1:server");
 var http = require("http");
 
@@ -26,7 +34,7 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-
+let passport = passportConfig();
 server.listen(port);
 server.on("error", onError);
 server.on("listening", onListening);
