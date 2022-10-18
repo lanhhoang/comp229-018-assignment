@@ -21,3 +21,67 @@ module.exports.index = (req, res, next) => {
     }
   });
 };
+
+module.exports.renderSignUp = (req, res, next) => {
+  if (!req.user) {
+    // create a new empty User object
+    const newUser = User();
+
+    res.render("auth/signup", {
+      title: "Sign Up Form",
+      user: newUser,
+      messages: req.flash("error"),
+    });
+  } else {
+    return res.redirect("/");
+  }
+};
+
+module.exports.signUp = (req, res, next) => {
+  const {
+    id: _id,
+    first_name: firstName,
+    last_name: lastName,
+    username,
+    email,
+    password,
+    password_confirmation: passwordConfirmation,
+  } = req.body;
+
+  const userParams = {
+    _id,
+    firstName,
+    lastName,
+    username,
+    email,
+    password,
+  };
+
+  if (!req.user && password === passwordConfirmation) {
+    console.log(req.body);
+
+    const user = User(userParams);
+    user.provider = "local";
+    console.log(user);
+
+    user.save((err) => {
+      if (err) {
+        let message = getErrorMessage(err);
+
+        req.flash("error", message);
+        return res.render("auth/signup", {
+          title: "Sign Up Form",
+          user: user,
+          messages: req.flash("error"),
+        });
+      }
+
+      req.login(user, (err) => {
+        if (err) return next(err);
+        return res.redirect("/");
+      });
+    });
+  } else {
+    return res.redirect("/");
+  }
+};

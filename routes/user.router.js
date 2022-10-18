@@ -12,4 +12,10 @@ let userController = require('../controllers/user.controller');
 /* GET users listing. */
 router.get("/", userController.index);
 
+/* GET route for rendering the Sign Up page */
+router.get("/signup", userController.renderSignUp);
+
+/* POST route for processing the Sign Up functionality */
+router.post("/signup", userController.signUp);
+
 module.exports = router;
