@@ -18,4 +18,10 @@ router.get("/signup", userController.renderSignUp);
 /* POST route for processing the Sign Up functionality */
 router.post("/signup", userController.signUp);
 
+/* GET route for rendering the Sign In page */
+router.get("/signin", userController.renderSignIn);
+
+/* POST route for processing the Sign Up functionality */
+router.post("/signin", userController.signIn);
+
 module.exports = router;

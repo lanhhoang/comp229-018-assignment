@@ -1,0 +1,53 @@
+<% include ../partials/header.ejs %>
+  <!-- Sign In page -->
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-3 col-md-6">
+        <h1 class="text-center"><%= title %></h1>
+        <div class="d-flex justify-content-center">
+          <hr class="border border-dark border-2 opacity-50 w-25" />
+        </div>
+
+        <% for (let i in messages) { %>
+          <div class="flash"><%= messages[i] %></div>
+        <% } %>
+        <form action="/users/signin" method="POST">
+           <div class="form-group">
+            <label for="usernameTextField">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="usernameTextField"
+              placeholder="Enter username"
+              name="username"
+              required
+            />
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="passwordTextField">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="passwordTextField"
+              placeholder="Enter password"
+              name="password"
+              required
+            />
+          </div>
+          <br />
+          <div class="form-group">
+            <button class="btn btn-success" type="submit">
+              <i class="fa-solid fa-check"></i>
+              Submit
+            </button>
+            <a href="/users/signup" class="btn btn-secondary">
+              <i class="fa-solid fa-user-plus"></i>
+              Sign Up
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<% include ../partials/footer.ejs %>

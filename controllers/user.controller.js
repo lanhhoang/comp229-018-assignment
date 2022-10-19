@@ -6,6 +6,7 @@ Date: October 14, 2022
 */
 
 const User = require("../models/user.model");
+const passport = require("passport");
 
 module.exports.index = (req, res, next) => {
   User.find({}, "-password -salt", (err, users) => {
@@ -84,4 +85,26 @@ module.exports.signUp = (req, res, next) => {
   } else {
     return res.redirect("/");
   }
+};
+
+module.exports.renderSignIn = (req, res, next) => {
+  if (!req.user) {
+    res.render("auth/signin", {
+      title: "Sign In Form",
+      messages: req.flash("error") || req.flash("info"),
+    });
+  } else {
+    console.log(req.user);
+    return res.redirect("/");
+  }
+};
+
+module.exports.signIn = (req, res, next) => {
+  passport.authenticate("local", {
+    successRedirect: req.session.url || "/",
+    failureRedirect: "/users/signin",
+    failureFlash: true,
+  })(req, res, next);
+
+  delete req.session.url;
 };
