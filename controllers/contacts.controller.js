@@ -19,7 +19,7 @@ module.exports.index = (req, res, next) => {
         username: req.user ? req.user.username : "",
       });
     }
-  }).sort({ firstName: 1 });
+  }).sort({ name: "asc" });
 };
 
 module.exports.displayAddPage = (req, res, next) => {
