@@ -16,6 +16,7 @@ module.exports.contactIndex = function (req, res, next) {
       res.render("contacts/index", {
         title: "Business Contact List",
         contacts: contacts,
+        username: req.user ? req.user.username : "",
       });
     }
   }).sort({ firstName: 1 });
@@ -27,6 +28,7 @@ module.exports.displayAddPage = (req, res, next) => {
   res.render("contacts/add_edit", {
     title: "Add New Contact",
     contact: newContact,
+    username: req.user ? req.user.username : "",
   });
 };
 
@@ -63,6 +65,7 @@ module.exports.displayEditPage = (req, res, next) => {
       res.render("contacts/add_edit", {
         title: "Edit Contact",
         contact: contact,
+        username: req.user ? req.user.username : "",
       });
     }
   });

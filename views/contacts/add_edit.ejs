@@ -8,7 +8,7 @@
           <hr class="border border-dark border-2 opacity-50 w-25" />
         </div>
 
-        <form class="form" method="POST">
+        <form class="form" method="POST" validate>
           <div class="form-group">
             <input type="hidden" name="id" value="<%= contact._id %>" />
           </div>
@@ -41,7 +41,7 @@
           <div class="form-group">
             <label for="phoneNumberTextField">Phone Number</label>
             <input
-              type="text"
+              type="tel"
               class="form-control"
               id="phoneNumberTextField"
               placeholder="Enter contact phone number"
@@ -52,9 +52,9 @@
           </div>
           <br />
           <div class="form-group">
-            <label for="firstNameTextField">Email</label>
+            <label for="emailTextField">Email</label>
             <input
-              type="text"
+              type="email"
               class="form-control"
               id="emailTextField"
               placeholder="Enter contact email"

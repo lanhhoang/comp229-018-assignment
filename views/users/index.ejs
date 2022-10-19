@@ -1,0 +1,30 @@
+<% include ../partials/header.ejs %>
+  <!-- User List page -->
+  <main class="container">
+    <div class="row">
+      <h1 class="text-center"><%= title %></h1>
+      <div class="d-flex justify-content-center">
+        <hr class="border border-dark border-2 opacity-50 w-25" />
+      </div>
+      <br />
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+          <tr>
+            <th class="text-center">Name</th>
+            <th class="text-center">Email Address</th>
+            <th class="text-center">Username</th>
+          </tr>
+
+          <% for (let idx = 0; idx < users.length; idx++) { %>
+          <tr>
+            <td class="text-center"><%= users[idx].fullName %></td>
+            <td class="text-center"><%= users[idx].email %></td>
+            <td class="text-center"><%= users[idx].username %></td>
+          </tr>
+          <% } %>
+        </table>
+      </div>
+    </div>
+  </main>
+<% include ../partials/footer.ejs %>

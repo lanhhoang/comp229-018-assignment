@@ -11,6 +11,9 @@ var express = require("express"); // Express
 var path = require("path"); // use relative path in our application; don't need to write absolute path; path will figure out the directory
 var cookieParser = require("cookie-parser"); // Parse Cookie header and populate req.cookies with an object keyed by the cookie names
 var logger = require("morgan"); // HTTP logger
+var session = require("express-session");
+var flash = require("connect-flash");
+var passport = require("passport");
 
 // import routers
 var indexRouter = require("../routes/index.router");
@@ -30,6 +33,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../public"))); // set static folder to public folder
 app.use(express.static(path.join(__dirname, "../node_modules"))); // second static folder, contain bootstrap and fontawesome
+
+app.use(
+  session({
+    saveUninitialized: true,
+    resave: true,
+    secret: "sessionSecret",
+  })
+);
+
+// Set up passport
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/", indexRouter); // defined paths after root path
 app.use("/users", usersRouter); // defined paths after users root path

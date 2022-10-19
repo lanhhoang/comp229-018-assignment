@@ -1,0 +1,101 @@
+<% include ../partials/header.ejs %>
+  <!-- Sign Up page -->
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-3 col-md-6">
+        <h1 class="text-center"><%= title %></h1>
+        <div class="d-flex justify-content-center">
+          <hr class="border border-dark border-2 opacity-50 w-25" />
+        </div>
+
+        <% for (let i in messages) { %>
+          <div class="flash"><%= messages[i] %></div>
+        <% } %>
+        <form action="/users/signup" method="POST" validate>
+          <div class="form-group">
+            <label for="firstNameTextField">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstNameTextField"
+              placeholder="Enter first name"
+              name="first_name"
+              value="<%= user.firstName %>"
+            />
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="lastNameTextField">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastNameTextField"
+              placeholder="Enter last name"
+              name="last_name"
+              value="<%= user.lastName %>"
+              required
+            />
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="emailTextField">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="emailTextField"
+              placeholder="Enter email"
+              name="email"
+              value="<%= user.email %>"
+              required
+            />
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="usernameTextField">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="usernameTextField"
+              placeholder="Enter username"
+              name="username"
+              value="<%= user.username %>"
+              required
+            />
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="passwordTextField">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="passwordTextField"
+              placeholder="Enter password"
+              name="password"
+              value="<%= user.password %>"
+              required
+            />
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="passwordConfirmationTextField"
+              >Password Confirmation</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="passwordConfirmationTextField"
+              placeholder="Enter password"
+              name="password_confirmation"
+              required
+            />
+          </div>
+          <br />
+          <button class="btn btn-primary" type="submit">
+            <i class="fa-solid fa-check"></i>
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+<% include ../partials/footer.ejs %>

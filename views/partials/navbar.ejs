@@ -51,6 +51,33 @@
             <i class="fa-solid fa-address-card"></i> Contact
           </a>
         </li>
+        <li class="nav-item dropdown">
+          <% if (title == "Business Contact List" || title == "Add New Contact") { %>
+            <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Business Contacts</a>
+          <% } else { %>
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Business Contacts</a>
+          <% } %>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/contacts">Business Contact List</a></li>
+            <li><a class="dropdown-item" href="/contacts/add">Add New Contact</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <% if (title == "User List") { %>
+            <a class="nav-link active" href="/users">
+          <% } else { %>
+            <a class="nav-link" href="/users">
+          <% } %>            
+            <i class="fa-solid fa-users"></i> Users
+          </a>
+        </li>
+        <li class="nav-item">
+          <% if (typeof username == "string" && username) { %>
+            <a class="nav-link" id="signout" href="/users/signout">Sign Out (<%= username %>)</a>
+          <% } else { %>
+            <a class="nav-link" href="/users/signin">Sign In</a>
+          <% } %>
+        </li>
       </ul>
     </div>
   </div>
