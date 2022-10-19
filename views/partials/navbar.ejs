@@ -62,22 +62,18 @@
             <li><a class="dropdown-item" href="/contacts/add">Add New Contact</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <% if (title == "User List") { %>
-            <a class="nav-link active" href="/users">
-          <% } else { %>
-            <a class="nav-link" href="/users">
-          <% } %>            
-            <i class="fa-solid fa-users"></i> Users
-          </a>
-        </li>
-        <li class="nav-item">
-          <% if (typeof username == "string" && username) { %>
+        <% if (typeof username == "string" && username) { %>
+          <li class="nav-item">
             <a class="nav-link" id="signout" href="/users/signout">Sign Out (<%= username %>)</a>
-          <% } else { %>
+          </li>
+        <% } else { %>
+          <li class="nav-item">
             <a class="nav-link" href="/users/signin">Sign In</a>
-          <% } %>
-        </li>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/signup">Sign Up</a>
+          </li>
+        <% } %>
       </ul>
     </div>
   </div>
