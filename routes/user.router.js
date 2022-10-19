@@ -8,9 +8,10 @@ Date: October 14, 2022
 var express = require("express");
 var router = express.Router();
 let userController = require('../controllers/user.controller');
+const requireAuth = require("../helpers/requireAuth");
 
 /* GET users listing. */
-router.get("/", userController.index);
+router.get("/", requireAuth, userController.index);
 
 /* GET route for rendering the Sign Up page */
 router.get("/signup", userController.renderSignUp);

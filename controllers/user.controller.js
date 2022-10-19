@@ -96,13 +96,13 @@ module.exports.renderSignIn = (req, res, next) => {
     });
   } else {
     console.log(req.user);
-    return res.redirect("/");
+    return res.redirect("/contacts");
   }
 };
 
 module.exports.signIn = (req, res, next) => {
   passport.authenticate("local", {
-    successRedirect: req.session.url || "/",
+    successRedirect: req.session.url || "/contacts",
     failureRedirect: "/users/signin",
     failureFlash: true,
   })(req, res, next);
@@ -114,5 +114,5 @@ module.exports.signOut = (req, res, next) => {
   req.logout((err) => {
     if (err) return next(err);
   });
-  res.redirect("/");
+  res.redirect("/users/signin");
 };
