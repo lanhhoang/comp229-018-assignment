@@ -10,8 +10,7 @@ let mongoose = require("mongoose");
 // Create Contact model class
 let ContactSchema = mongoose.Schema(
   {
-    firstName: String,
-    lastName: String,
+    name: String,
     phoneNumber: {
       type: String,
       match: [/[0-9]{3}-[0-9]{3}-[0-9]{4}/, "Please fill a valid phone number"],
@@ -25,18 +24,5 @@ let ContactSchema = mongoose.Schema(
     collection: "contacts",
   }
 );
-
-ContactSchema.virtual("fullName")
-  .get(function () {
-    return `${this.firstName} ${this.lastName}`;
-  })
-  .set(function (fullName) {
-    [this.firstName, this.lastName] = fullName.split(" ");
-  });
-
-ContactSchema.set("toJSON", {
-  getters: true,
-  setters: true,
-});
 
 module.exports = mongoose.model("Contact", ContactSchema);

@@ -7,7 +7,7 @@ Date: October 16, 2022
 
 const Contact = require("../models/contact.model");
 
-module.exports.contactIndex = function (req, res, next) {
+module.exports.index = (req, res, next) => {
   Contact.find((err, contacts) => {
     console.log(contacts);
     if (err) {
@@ -35,8 +35,7 @@ module.exports.displayAddPage = (req, res, next) => {
 module.exports.processAddPage = (req, res, next) => {
   const newContact = Contact({
     _id: req.body.id,
-    firstName: req.body.first_name,
-    lastName: req.body.last_name,
+    name: req.body.name,
     phoneNumber: req.body.phone_number,
     email: req.body.email,
   });
@@ -75,8 +74,7 @@ module.exports.processEditPage = (req, res, next) => {
   const id = req.params.id;
   const updatedContact = Contact({
     _id: req.body.id,
-    firstName: req.body.first_name,
-    lastName: req.body.last_name,
+    name: req.body.name,
     phoneNumber: req.body.phone_number,
     email: req.body.email,
   });
