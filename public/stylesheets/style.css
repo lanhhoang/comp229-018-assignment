@@ -1,8 +1,26 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+/*
+File name: public/stylesheets/style.css
+Student name: Cong Lanh Hoang
+Student ID: 301210743
+Date: October 19, 2022
+*/
 
-a {
-  color: #00b7ff;
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+.flash {
+  color: red;
 }
