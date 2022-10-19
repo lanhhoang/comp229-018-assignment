@@ -18,6 +18,7 @@ module.exports.index = (req, res, next) => {
       res.render("users/index", {
         title: "User List",
         users: users,
+        username: req.user ? req.user.username : "",
       });
     }
   });
