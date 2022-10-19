@@ -24,4 +24,7 @@ router.get("/signin", userController.renderSignIn);
 /* POST route for processing the Sign Up functionality */
 router.post("/signin", userController.signIn);
 
+/* GET route for processing the Sign Out functionality */
+router.get("/signout", userController.signOut);
+
 module.exports = router;

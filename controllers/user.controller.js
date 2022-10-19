@@ -108,3 +108,10 @@ module.exports.signIn = (req, res, next) => {
 
   delete req.session.url;
 };
+
+module.exports.signOut = (req, res, next) => {
+  req.logout((err) => {
+    if (err) return next(err);
+  });
+  res.redirect("/");
+};
