@@ -87,7 +87,7 @@ UserSchema.methods.authenticate = function (password) {
 
 UserSchema.set("toJSON", {
   getters: true,
-  setters: true,
+  virtual: true,
 });
 
 module.exports = mongoose.model("User", UserSchema);
