@@ -80,7 +80,7 @@ module.exports.signUp = (req, res, next) => {
 
       req.login(user, (err) => {
         if (err) return next(err);
-        return res.redirect("/");
+        return res.redirect("/contacts");
       });
     });
   } else {
