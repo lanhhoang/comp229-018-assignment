@@ -11,9 +11,12 @@ var express = require("express"); // Express
 var path = require("path"); // use relative path in our application; don't need to write absolute path; path will figure out the directory
 var cookieParser = require("cookie-parser"); // Parse Cookie header and populate req.cookies with an object keyed by the cookie names
 var logger = require("morgan"); // HTTP logger
-var session = require("express-session");
-var flash = require("connect-flash");
-var passport = require("passport");
+let compress = require("compression");
+let bodyParser = require("body-parser");
+let methodOverride = require("method-override");
+let session = require("express-session");
+let flash = require("connect-flash");
+let passport = require("passport");
 
 // import routers
 var indexRouter = require("../routes/index.router");
@@ -22,6 +25,14 @@ var contactsRouter = require("../routes/contacts.router");
 
 // instantiate new express object
 var app = express();
+
+app.use(
+  session({
+    saveUninitialized: true,
+    resave: true,
+    secret: "sessionSecret",
+  })
+);
 
 // view engine setup
 app.set("views", path.join(__dirname, "../views")); // set the location of views folder
@@ -33,14 +44,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../public"))); // set static folder to public folder
 app.use(express.static(path.join(__dirname, "../node_modules"))); // second static folder, contain bootstrap and fontawesome
-
-app.use(
-  session({
-    saveUninitialized: true,
-    resave: true,
-    secret: "sessionSecret",
-  })
-);
 
 // Set up passport
 app.use(flash());
