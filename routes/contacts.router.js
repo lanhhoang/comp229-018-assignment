@@ -8,23 +8,24 @@ Date: October 16, 2022
 var express = require("express");
 var router = express.Router();
 let contactsController = require("../controllers/contacts.controller");
+const requireAuth = require("../helpers/requireAuth");
 
 /* GET contacts listing. */
-router.get("/", contactsController.contactIndex);
+router.get("/", requireAuth, contactsController.index);
 
 /* GET route for displaying the Add page - CREATE operation */
-router.get("/add", contactsController.displayAddPage);
+router.get("/add", requireAuth, contactsController.displayAddPage);
 
 /* POST route for processing the Add page - CREATE operation */
-router.post("/add", contactsController.processAddPage);
+router.post("/add", requireAuth, contactsController.processAddPage);
 
 /* GET route for displaying the Edit page - UPDATE operation */
-router.get("/edit/:id", contactsController.displayEditPage);
+router.get("/edit/:id", requireAuth, contactsController.displayEditPage);
 
 /* POST route for processing the Edit page - UPDATE operation */
-router.post("/edit/:id", contactsController.processEditPage);
+router.post("/edit/:id", requireAuth, contactsController.processEditPage);
 
 /* DELETE contact. */
-router.get("/delete/:id", contactsController.delete);
+router.get("/delete/:id", requireAuth, contactsController.delete);
 
 module.exports = router;
