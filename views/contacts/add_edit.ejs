@@ -8,6 +8,9 @@
           <hr class="border border-dark border-2 opacity-50 w-25" />
         </div>
 
+        <% for (let i in messages) { %>
+          <div class="flash"><%= messages[i] %></div>
+        <% } %>
         <form class="form" method="POST" validate>
           <div class="form-group">
             <input type="hidden" name="id" value="<%= contact._id %>" />
