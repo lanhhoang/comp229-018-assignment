@@ -30,7 +30,7 @@ module.exports.displayAddPage = (req, res, next) => {
     title: "Add New Contact",
     contact: newContact,
     username: req.user ? req.user.username : "",
-    messages: "",
+    messages: req.flash("error") || req.flash("info"),
   });
 };
 
@@ -76,7 +76,7 @@ module.exports.displayEditPage = (req, res, next) => {
         title: "Edit Contact",
         contact: contact,
         username: req.user ? req.user.username : "",
-        messages: "",
+        messages: req.flash("error") || req.flash("info"),
       });
     }
   });
