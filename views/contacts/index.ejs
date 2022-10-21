@@ -28,27 +28,27 @@
           </tr>
 
           <% for (let idx = 0; idx < contacts.length; idx++) { %>
-          <tr>
-            <td class="text-center"><%= contacts[idx].name %></td>
-            <td class="text-center"><%= contacts[idx].phoneNumber %></td>
-            <td class="text-center"><%= contacts[idx].email %></td>
-            <td class="text-center">
-              <a
-                href="/contacts/edit/<%= contacts[idx]._id %>"
-                class="btn btn-primary btn-sm"
-              >
-                <i class="fa-solid fa-pen-to-square"></i>
-              </a>
-            </td>
-            <td class="text-center">
-              <a
-                href="/contacts/delete/<%= contacts[idx]._id %>"
-                class="btn btn-danger btn-sm"
-              >
-                <i class="fa-solid fa-trash"></i>
-              </a>
-            </td>
-          </tr>
+            <tr>
+              <td class="text-center"><%= contacts[idx].name %></td>
+              <td class="text-center"><%= contacts[idx].phoneNumber %></td>
+              <td class="text-center"><%= contacts[idx].email %></td>
+              <td class="text-center">
+                <a
+                  href="/contacts/edit/<%= contacts[idx]._id %>"
+                  class="btn btn-primary btn-sm"
+                >
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+              </td>
+              <td class="text-center">
+                <a
+                  href="/contacts/delete/<%= contacts[idx]._id %>"
+                  class="btn btn-danger btn-sm"
+                >
+                  <i class="fa-solid fa-trash"></i>
+                </a>
+              </td>
+            </tr>
           <% } %>
         </table>
       </div>
