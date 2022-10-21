@@ -9,7 +9,7 @@ const Contact = require("../models/contact.model");
 const getErrorMessage = require("../helpers/getErrorMessage");
 
 module.exports.index = (req, res, next) => {
-  Contact.find((err, contacts) => {
+  Contact.find({}, null, { sort: { name: "asc" } }, (err, contacts) => {
     console.log(contacts);
     if (err) {
       return console.error(err);
@@ -20,7 +20,7 @@ module.exports.index = (req, res, next) => {
         username: req.user ? req.user.username : "",
       });
     }
-  }).sort({ name: "asc" });
+  });
 };
 
 module.exports.displayAddPage = (req, res, next) => {
