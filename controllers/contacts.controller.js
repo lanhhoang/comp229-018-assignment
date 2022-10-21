@@ -6,9 +6,10 @@ Date: October 16, 2022
 */
 
 const Contact = require("../models/contact.model");
+const getErrorMessage = require("../helpers/getErrorMessage");
 
 module.exports.index = (req, res, next) => {
-  Contact.find((err, contacts) => {
+  Contact.find({}, null, { sort: { name: "asc" } }, (err, contacts) => {
     console.log(contacts);
     if (err) {
       return console.error(err);
@@ -19,7 +20,7 @@ module.exports.index = (req, res, next) => {
         username: req.user ? req.user.username : "",
       });
     }
-  }).sort({ name: "asc" });
+  });
 };
 
 module.exports.displayAddPage = (req, res, next) => {
@@ -29,6 +30,7 @@ module.exports.displayAddPage = (req, res, next) => {
     title: "Add New Contact",
     contact: newContact,
     username: req.user ? req.user.username : "",
+    messages: "",
   });
 };
 
@@ -43,7 +45,15 @@ module.exports.processAddPage = (req, res, next) => {
   Contact.create(newContact, (err, contact) => {
     if (err) {
       console.error(err);
-      res.end(err);
+      const message = getErrorMessage(err);
+      req.flash("error", message);
+
+      res.render("contacts/add_edit", {
+        title: "Add New Contact",
+        contact: newContact,
+        username: req.user ? req.user.username : "",
+        messages: req.flash("error"),
+      });
     } else {
       // refresh the contact list
       console.log(contact);
@@ -55,16 +65,18 @@ module.exports.processAddPage = (req, res, next) => {
 module.exports.displayEditPage = (req, res, next) => {
   const id = req.params.id;
 
-  Contact.findById(id, (err, contact) => {
-    if (err) {
+  Contact.findById(id, null, {}, (err, contact) => {
+    // If document is not exist, "err" and "contact" are null
+    if (!contact) {
       console.error(err);
-      res.end(err);
+      res.render("404", { title: "404 Not Found" });
     } else {
       // show the edit view
       res.render("contacts/add_edit", {
         title: "Edit Contact",
         contact: contact,
         username: req.user ? req.user.username : "",
+        messages: "",
       });
     }
   });
@@ -79,15 +91,28 @@ module.exports.processEditPage = (req, res, next) => {
     email: req.body.email,
   });
 
-  Contact.updateOne({ _id: id }, updatedContact, (err) => {
-    if (err) {
-      console.error(err);
-      res.end(err);
-    } else {
-      // refresh the contact list
-      res.redirect("/contacts");
+  Contact.updateOne(
+    { _id: id },
+    updatedContact,
+    { runValidators: true },
+    (err) => {
+      if (err) {
+        console.error(err);
+        const message = getErrorMessage(err);
+        req.flash("error", message);
+
+        res.render("contacts/add_edit", {
+          title: "Edit Contact",
+          contact: updatedContact,
+          username: req.user ? req.user.username : "",
+          messages: req.flash("error"),
+        });
+      } else {
+        // refresh the contact list
+        res.redirect("/contacts");
+      }
     }
-  });
+  );
 };
 
 module.exports.delete = (req, res, next) => {

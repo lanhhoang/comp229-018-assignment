@@ -12,7 +12,7 @@ if (signOutLink) {
   signOutLink.addEventListener("click", () => confirm("Are you sure?"));
 }
 
-if (getTitle === "Business Contact List") {
+if (getTitle === "Business Contact List" || getTitle === "Edit Contact") {
   let deleteButtons = document.querySelectorAll(".btn-danger");
 
   for (button of deleteButtons) {
