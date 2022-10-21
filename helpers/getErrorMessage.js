@@ -5,6 +5,7 @@ Student ID: 301210743
 Date: October 20, 2022
 */
 
+// helper function for generating error message
 const getErrorMessage = (err) => {
   console.log(`[DEBUG] ${err}`);
   let message = "";

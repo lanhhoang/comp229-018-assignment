@@ -29,7 +29,7 @@ let UserSchema = mongoose.Schema(
         (password) => {
           return password && password.length > 6;
         },
-        "Password should have at least 6 characters",
+        "Password should be longer",
       ],
     },
     salt: String,
